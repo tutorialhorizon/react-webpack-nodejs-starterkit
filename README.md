@@ -1,9 +1,10 @@
 react-webpack-nodejs-starterkit
 ===========
+
 This starter kit contains
 
-- [x] React
-- [x] React-Router
+- [x] React 0.14
+- [x] React-Router 1.x
 - [x] Webpack
 - [x] React Hot Loading - to auto reload your UI components
 - [x] Stylus and nib CSS preprocessors
@@ -35,5 +36,6 @@ $ npm run prod
 ```
 Run this when you want production configuration from `/config/index.js` and production settings for webpack.
 
-See the package.json scripts section for more details.
+See the package.json scripts section for more details on the scripts.
+
 ---
