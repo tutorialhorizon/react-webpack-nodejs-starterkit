@@ -10,7 +10,7 @@ module.exports = {
         var origUrl = req.originalUrl;
         var ipLogMessages = [];
 
-        var user = _.get(req, 'session.passport.user', {id: 'guest user id'});
+        var user = _.get(req, 'session.passport.user', {id: 'guest_user_id'});
 
             if (!origUrl.match(/.css/) && !origUrl.match(/.js/)) {
                 if (user) {

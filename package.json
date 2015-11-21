@@ -1,13 +1,13 @@
 {
   "name": "react-webpack-node-starterkit",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Basic app that uses hot-loading, react-router, es6 babel with an express server",
   "author": "tutorialhorizon@gmail.com",
   "scripts": {
     "build": "grunt build",
     "dev": "NODE_ENV=development node index.js",
     "hot-dev": "HOT=true NODE_ENV=development nodemon --watch server index.js",
-    "prod": "webpack --config webpack/prod-config.js --progress && grunt build && NODE_ENV=production node index.js"
+    "prod": "webpack --config webpack/prod-config.js --progress && NODE_ENV=production node index.js"
   },
   "dependencies": {
     "babel-core": "^5.8.21",

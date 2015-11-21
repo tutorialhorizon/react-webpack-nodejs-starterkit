@@ -53,6 +53,7 @@ app.use(session({
 	saveUninitialized: true,
 	resave: true
 }));
+app.use(express.static(__dirname + '/public'));
 // app.use(passport.initialize());
 
 // --- Custom Middleware ---
