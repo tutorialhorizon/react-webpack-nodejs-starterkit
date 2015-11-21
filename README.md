@@ -1,20 +1,22 @@
 react-webpack-nodejs-starterkit
 ===========
 This starter kit contains
-[x] React
-[x] React-Router
-[x] Webpack
-[x] React Hot Loading - to auto reload your UI components
-[x] Stylus and nib CSS preprocessors
-[x] Babel es6 transpiling
-[x] Nodemon - to watch server files
-[x] Express server integrated with hot loading
-[x] Bootstrap styles
+
+- [x] React
+- [x] React-Router
+- [x] Webpack
+- [x] React Hot Loading - to auto reload your UI components
+- [x] Stylus and nib CSS preprocessors
+- [x] Babel es6 transpiling
+- [x] Nodemon - to watch server files
+- [x] Express server integrated with hot loading
+- [x] Bootstrap styles
 
 Other goodies that are available
-[x] winston for logging at the express layer.
-[x] npm scripts for building production and development assets
-[x] jshint
+- [x] winston for logging at the express layer.
+- [x] npm scripts for building production and development assets
+- [x] jshint
+
 ---
 
 #### npm scripts
@@ -31,7 +33,7 @@ Run this when you dont want any file watching but need to use development config
 ```
 $ npm run prod
 ```
-Run this when you want production configuration from '/config/index.js' and production settings for webpack.
+Run this when you want production configuration from `/config/index.js` and production settings for webpack.
 
 See the package.json scripts section for more details.
 ---
