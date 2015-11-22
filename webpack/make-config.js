@@ -1,3 +1,5 @@
+'use strict';
+
 var path = require('path');
 var webpack = require("webpack");
 var _ = require('lodash');
@@ -6,7 +8,7 @@ var nib = require('nib');
 
 module.exports = function (options) {
     var jsxLoaders = ['babel-loader'];
-    var entry = [path.resolve(__dirname, '../flux/Routes.jsx')];
+    var entry = [path.resolve(__dirname, '../src/Router.jsx')];
     var plugins = [];
 
     if (options.hotComponents) {
