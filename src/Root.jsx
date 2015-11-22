@@ -9,19 +9,46 @@ import createBrowserHistory from 'history/lib/createBrowserHistory'
 import {applyMiddleware, compose, createStore} from 'redux';
 import {ReduxRouter, reduxReactRouter} from 'redux-router';
 import {Provider, connect} from 'react-redux';
+import thunk from 'redux-thunk';
 
 // Files from the app
-import reducers from './reducers';
+import rootReducer from './reducers';
 import routes from './Routes.jsx';
 
-// TODO: redux-thunk integration
-const store = compose(
-  // applyMiddleware(m1, m2, m3),
-  reduxReactRouter({
-    routes,
-    createHistory: createBrowserHistory
-  })
-)(createStore)(reducers);
+let middleware = [ thunk ];
+let storeEnhancers = [
+	reduxReactRouter({
+		routes,
+		createHistory: createBrowserHistory
+	})
+];
+let finalCreateStore;
+
+if (process.env.NODE_ENV === 'production') {
+	// TODO
+	// finalCreateStore = applyMiddleware(...middleware)(createStore)
+} else {
+	console.log('goes here');
+	finalCreateStore = compose(
+		applyMiddleware(...middleware),
+		...storeEnhancers
+		// TODO: Add dev tools
+		// require('redux-devtools').devTools(),
+		// require('redux-devtools').persistState(
+		// 	window.location.href.match(/[?&]debug_session=([^&]+)\b/)
+		// )
+	)(createStore)
+}
+
+// const store = compose(
+// 	applyMiddleware(...middleware),
+// 	reduxReactRouter({
+// 		routes,
+// 		createHistory: createBrowserHistory
+// 	})
+// )(createStore)(reducers);
+
+let store = finalCreateStore(rootReducer);
 
 class Root extends Component {
 	render() {
@@ -41,7 +68,9 @@ ReactDOM.render(<Root />, document.getElementById('app'));
 
 store.dispatch({
 	type: 'ADD_GROCERY',
-	name: 'Yogurt'
+	payload: {
+		name: 'Yogurt'
+	}
 });
 
 console.log(store.getState());
@@ -49,6 +78,8 @@ console.log(store.getState());
 setTimeout(() => {
 	store.dispatch({
 		type: 'ADD_GROCERY',
-		name: 'Milk'
+		payload: {
+			name: 'Milk'
+		}
 	});
-}, 2000)
+}, 2000);

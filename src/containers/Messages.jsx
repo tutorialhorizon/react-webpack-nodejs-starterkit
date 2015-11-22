@@ -4,6 +4,9 @@ import React, { Component } from 'react';
 import {Link} from 'react-router';
 import {connect} from 'react-redux'
 
+// Actions
+import * as Actions from '../actions';
+
 // Components
 import Greeting from '../components/Greeting.jsx';
 import {groceriesSelector} from '../selectors';
@@ -36,13 +39,47 @@ class Messages extends Component {
 		);
 	}
 
+	getPayload() {
+		const r = this.refs;
+		return {
+			name: r.groceryInput.value
+		};
+	}
+
+	addGroceryItemAsync() {
+		const p = this.props;
+
+		p.dispatch(
+			Actions.addGroceryItemAsync(this.getPayload())
+		);
+	}
+
+	addGroceryItem() {
+		const p = this.props;
+
+		p.dispatch(
+			Actions.addGroceryItem(this.getPayload())
+		);
+	}
+
 	render() {
 		return (
 			<main className="container">
 				<Greeting />
 				{this.renderEmptyMessage()}
 				{this.renderGroceryList()}
-				<Link to="/">Click here to go back</Link>
+				<input placeholder="Add an item" 
+					type="text" ref="groceryInput"
+				/>
+				<button onClick={this.addGroceryItemAsync.bind(this)}>
+					Add Async
+				</button>
+				<button onClick={this.addGroceryItem.bind(this)}>
+					Add Sync
+				</button>
+				<div className="mt-10">
+					<Link to="/">Click here to go back</Link>
+				</div>
 			</main>
 		);
 	}
