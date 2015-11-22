@@ -14,4 +14,3 @@ export default (
         <Route path="messages" component={Messages} />
 	</Route>
 );
-
