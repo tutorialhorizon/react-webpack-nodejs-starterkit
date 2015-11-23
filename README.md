@@ -1,9 +1,13 @@
 react-webpack-nodejs-starterkit
 ===========
 
-The master branch of this repo is a starter kit that uses react without any flux frameworks.
-For use with redux, check out the [redux-integrations](https://github.com/tutorialhorizon/react-webpack-nodejs-starterkit/tree/redux-integrations) branch.
+The master branch of this repo is a starter kit that uses React without any flux frameworks and integrates it with an application level express server that is configured to hot reload your react componets in `development` environment.
 
+- For use with redux, check out the [redux-integrations](https://github.com/tutorialhorizon/react-webpack-nodejs-starterkit/tree/redux-integrations) branch.
+
+---
+
+#### Basic integrations
 - [x] React 0.14
 - [x] React-Router 1.x
 - [x] Webpack
