@@ -1,7 +1,7 @@
 react-webpack-nodejs-starterkit
 ===========
 
-This starter kit contains
+This starter kit contains the following core libraries and then some more to integrate with redux.
 
 - [x] React 0.14
 - [x] React-Router 1.x
@@ -15,8 +15,11 @@ This starter kit contains
 
 #### Redux integrations
 - [x] reselect
+- [x] react-redux - To connect you higher order components to redux stores
+- [x] redux-router - Wrapper over react-router to expose routes as part of yout tree state itself
 - [x] redux-thunk - store middleware
-- [] redux-actions - for creating FSA i.e. [Flux Standard Actions](https://github.com/acdlite/flux-standard-action)
+- [x] redux-actions - for creating FSA i.e. [Flux Standard Actions](https://github.com/acdlite/flux-standard-action)
+- [x] seamless-immutable - For data in the stores
 
 #### Other goodies
 - [x] winston for logging at the express server.

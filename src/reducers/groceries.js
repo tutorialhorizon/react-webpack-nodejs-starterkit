@@ -3,18 +3,18 @@
 // Creates FSA compliant actions
 // https://github.com/acdlite/flux-standard-action
 import {handleActions} from 'redux-actions';
+import Immutable from 'seamless-immutable';
 
 import * as ActionTypes from '../actionTypes';
 
-let initialState = [];
-
+let initialState = Immutable([]);
 
 // I wanted to use handleAction but there was an open issue
 // with its initialization
 // https://github.com/acdlite/redux-actions/issues/23
 export default handleActions({
 	[ActionTypes.ADD_GROCERY]: {
-		next(state, action) {
+		next(oldState, action) {
 			// TODO: Use seamless-immutable
 			let {payload} = action;
 
@@ -23,11 +23,11 @@ export default handleActions({
 					name: payload.name,
 					quantity: payload.quantity || 1
 				}
-			].concat(state);
+			].concat(oldState);
 		},
-		throw(state, action) {
-			// Decide whats the best way to store this data
-			// this based on your business use case
+		throw(oldState, action) {
+			// Decide whats the best way to handle an error
+			// based on your business use case
 			return action.payload;
 		}
 	}
