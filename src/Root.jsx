@@ -3,25 +3,28 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 import {Router} from 'react-router';
-import createBrowserHistory from 'history/lib/createBrowserHistory'
 
 // Redux integration libraries
 import {applyMiddleware, compose, createStore} from 'redux';
-import {ReduxRouter, reduxReactRouter} from 'redux-router';
+import {ReduxRouter} from 'redux-router';
 import {Provider, connect} from 'react-redux';
-import thunk from 'redux-thunk';
+
+// Redux utilities
+import middleware from './middleware';
 
 // Files from the app
 import rootReducer from './reducers';
 import routes from './Routes.jsx';
+import getStoreEnhancers from './storeEnhancers';
 
-let middleware = [ thunk ];
-let storeEnhancers = [
-	reduxReactRouter({
-		routes,
-		createHistory: createBrowserHistory
-	})
-];
+let storeEnhancers = getStoreEnhancers(routes);
+
+// let storeEnhancers = [
+// 	reduxReactRouter({
+// 		routes,
+// 		createHistory: createBrowserHistory
+// 	})
+// ];
 let finalCreateStore;
 
 if (process.env.NODE_ENV === 'production') {
@@ -39,14 +42,6 @@ if (process.env.NODE_ENV === 'production') {
 		// )
 	)(createStore)
 }
-
-// const store = compose(
-// 	applyMiddleware(...middleware),
-// 	reduxReactRouter({
-// 		routes,
-// 		createHistory: createBrowserHistory
-// 	})
-// )(createStore)(reducers);
 
 let store = finalCreateStore(rootReducer);
 
