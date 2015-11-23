@@ -1,7 +1,8 @@
 react-webpack-nodejs-starterkit
 ===========
 
-This starter kit contains
+The master branch of this repo is a starter kit that uses react without any flux frameworks.
+For use with redux, check out the [redux-integrations](https://github.com/tutorialhorizon/react-webpack-nodejs-starterkit/tree/redux-integrations) branch.
 
 - [x] React 0.14
 - [x] React-Router 1.x
@@ -13,10 +14,11 @@ This starter kit contains
 - [x] Express server integrated with hot loading
 - [x] Bootstrap styles
 
-Other goodies that are available
-- [x] winston for logging at the express layer.
+#### Other goodies
+- [x] winston for logging at the express server.
 - [x] npm scripts for building production and development assets
-- [x] jshint
+- [ ] npm run lint - runs eslint
+- [x] Static files are served from `public/` using expres.static.
 
 ---
 
