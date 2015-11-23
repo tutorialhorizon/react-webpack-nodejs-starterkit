@@ -1,22 +1,34 @@
 'use strict';
 
-let initialState = [];
+// Creates FSA compliant actions
+// https://github.com/acdlite/flux-standard-action
+import {handleActions} from 'redux-actions';
 
 import * as ActionTypes from '../actionTypes';
 
-// TODO: Use seamless-immutable
+let initialState = [];
 
-// Function that returns a list of grocery items
-export default function groceries(state = initialState, action) {
-	switch(action.type) {
-		case ActionTypes.ADD_GROCERY:
+
+// I wanted to use handleAction but there was an open issue
+// with its initialization
+// https://github.com/acdlite/redux-actions/issues/23
+export default handleActions({
+	[ActionTypes.ADD_GROCERY]: {
+		next(state, action) {
+			// TODO: Use seamless-immutable
+			let {payload} = action;
+
 			return [
 				{
-					name: action.payload.name,
-					quantity: action.payload.quantity || 1
+					name: payload.name,
+					quantity: payload.quantity || 1
 				}
 			].concat(state);
-		default:
-			return state;
+		},
+		throw(state, action) {
+			// Decide whats the best way to store this data
+			// this based on your business use case
+			return action.payload;
+		}
 	}
-}
+}, initialState);

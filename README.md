@@ -13,10 +13,16 @@ This starter kit contains
 - [x] Express server integrated with hot loading
 - [x] Bootstrap styles
 
-Other goodies that are available
-- [x] winston for logging at the express layer.
+#### Redux integrations
+- [x] reselect
+- [x] redux-thunk - store middleware
+- [] redux-actions - for creating FSA i.e. [Flux Standard Actions](https://github.com/acdlite/flux-standard-action)
+
+#### Other goodies
+- [x] winston for logging at the express server.
 - [x] npm scripts for building production and development assets
-- [x] jshint
+- [ ] jshint npm script
+- [ ] Static files are served from `public/` using expres.static.
 
 ---
 

@@ -1,13 +1,12 @@
 'use strict';
 
+// Creates FSA compliant actions
+// https://github.com/acdlite/flux-standard-action
+import {createAction} from 'redux-actions';
+
 import * as ActionTypes from '../actionTypes';
 
-export function addGroceryItem(payload) {
-	return {
-		type: ActionTypes.ADD_GROCERY,
-		payload
-	};
-}
+export const addGroceryItem = createAction(ActionTypes.ADD_GROCERY);
 
 export function addGroceryItemAsync(payload) {
 	return (dispatch, getState) => {
