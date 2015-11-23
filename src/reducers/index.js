@@ -4,8 +4,8 @@ import { combineReducers } from 'redux';
 import { routerStateReducer } from 'redux-router';
 import groceries from './groceries';
 
-// This file exports your root reducer
-export default combineReducers({
+// Export your root reducer
+export const rootReducer = combineReducers({
 	router: routerStateReducer,
 	groceries
 });

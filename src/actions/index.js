@@ -10,7 +10,6 @@ export function addGroceryItem(payload) {
 }
 
 export function addGroceryItemAsync(payload) {
-	console.log(arguments);
 	return (dispatch, getState) => {
 		setTimeout(() => {
 			dispatch(addGroceryItem(payload));

@@ -7,74 +7,34 @@ import {Router} from 'react-router';
 // Redux integration libraries
 import {applyMiddleware, compose, createStore} from 'redux';
 import {ReduxRouter} from 'redux-router';
-import {Provider, connect} from 'react-redux';
+import {Provider} from 'react-redux';
 
-// Redux utilities
+// Redux utilities in the app
 import middleware from './middleware';
+import getStoreEnhancers from './storeEnhancers';
+import {rootReducer} from './reducers';
 
 // Files from the app
-import rootReducer from './reducers';
 import routes from './Routes.jsx';
-import getStoreEnhancers from './storeEnhancers';
 
-let storeEnhancers = getStoreEnhancers(routes);
-
-// let storeEnhancers = [
-// 	reduxReactRouter({
-// 		routes,
-// 		createHistory: createBrowserHistory
-// 	})
-// ];
-let finalCreateStore;
-
-if (process.env.NODE_ENV === 'production') {
-	// TODO
-	// finalCreateStore = applyMiddleware(...middleware)(createStore)
-} else {
-	console.log('goes here');
-	finalCreateStore = compose(
-		applyMiddleware(...middleware),
-		...storeEnhancers
-		// TODO: Add dev tools
-		// require('redux-devtools').devTools(),
-		// require('redux-devtools').persistState(
-		// 	window.location.href.match(/[?&]debug_session=([^&]+)\b/)
-		// )
-	)(createStore)
-}
-
+let finalCreateStore = compose(
+	applyMiddleware(...middleware),
+	...getStoreEnhancers(routes)
+)(createStore);
 let store = finalCreateStore(rootReducer);
 
-class Root extends Component {
-	render() {
-	    return (
-	    	<div>
-	        	<Provider store={store}>
-					<ReduxRouter>
-						{routes}
-					</ReduxRouter>
-	        	</Provider>
-	      </div>
-	    );
-  	}
+// Create a stateless functional component for the Root
+// https://facebook.github.io/react/blog/2015/10/07/react-v0.14.html#stateless-functional-components
+function Root() {
+	return (
+		<div>
+	    	<Provider store={store}>
+				<ReduxRouter>
+					{routes}
+				</ReduxRouter>
+	    	</Provider>
+		</div>
+	)
 }
 
 ReactDOM.render(<Root />, document.getElementById('app'));
-
-store.dispatch({
-	type: 'ADD_GROCERY',
-	payload: {
-		name: 'Yogurt'
-	}
-});
-
-console.log(store.getState());
-
-setTimeout(() => {
-	store.dispatch({
-		type: 'ADD_GROCERY',
-		payload: {
-			name: 'Milk'
-		}
-	});
-}, 2000);
