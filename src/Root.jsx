@@ -5,22 +5,19 @@ import ReactDOM from 'react-dom';
 import {Router} from 'react-router';
 
 // Redux integration libraries
-import {applyMiddleware, compose, createStore} from 'redux';
+import {compose, createStore} from 'redux';
 import {ReduxRouter} from 'redux-router';
 import {Provider} from 'react-redux';
 
 // Redux utilities in the app
-import middleware from './middleware';
 import getStoreEnhancers from './storeEnhancers';
 import {rootReducer} from './reducers';
 
 // Files from the app
 import routes from './Routes.jsx';
 
-let finalCreateStore = compose(
-	applyMiddleware(...middleware),
-	...getStoreEnhancers(routes)
-)(createStore);
+let composedEnhancers = compose(...getStoreEnhancers(routes));
+let finalCreateStore = composedEnhancers(createStore);
 let store = finalCreateStore(rootReducer);
 
 // Create a stateless functional component for the Root

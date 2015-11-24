@@ -38,6 +38,8 @@ This starter kit contains the following core libraries *and then some more to in
 #### npm scripts
 You can run the app in a snap using the npm scripts described below. These scripts cause the app to read the configuration from [/config/index.js](https://github.com/tutorialhorizon/react-webpack-nodejs-starterkit/blob/redux-integrations/config/index.js).
 
+As per the default configuration, in `development` enviroment, you can open `http://localhost:15000` to view the app.
+
 ```
 $ npm run hot-dev
 ```

@@ -2,13 +2,21 @@
 
 import {reduxReactRouter} from 'redux-router';
 import createBrowserHistory from 'history/lib/createBrowserHistory'
+import middleware from './middleware';
+import {applyMiddleware, compose} from 'redux';
 
 export default function getStoreEnhancers(routes) {
+	let middlewareEnhancer = applyMiddleware(...middleware);
+	let reduxRouterEnhancer = reduxReactRouter({
+		routes,
+		createHistory: createBrowserHistory
+	});
+
+	// By default, we add some enhancers for you.
+	// You can add more enhancers to this array
 	let storeEnhancers = [
-		reduxReactRouter({
-			routes,
-			createHistory: createBrowserHistory
-		})
+		middlewareEnhancer,
+		reduxRouterEnhancer
 	];
 
 	if (process.env.NODE_ENV !== 'production') {
