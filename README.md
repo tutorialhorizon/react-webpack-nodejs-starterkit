@@ -3,7 +3,7 @@ react-webpack-nodejs-starterkit
 
 The master branch of this repo is a starter kit that uses React without any flux frameworks and integrates it with an application level express server that is configured to hot reload your react componets in `development` environment.
 
-- For use with redux, check out the [redux-integrations](https://github.com/tutorialhorizon/react-webpack-nodejs-starterkit/tree/redux-integrations) branch.
+- **NOTE** For use with redux, check out the [redux-integrations](https://github.com/tutorialhorizon/react-webpack-nodejs-starterkit/tree/redux-integrations) branch.
 
 ---
 
@@ -27,20 +27,22 @@ The master branch of this repo is a starter kit that uses React without any flux
 ---
 
 #### npm scripts
+You can run the app in a snap using the npm scripts described below. These scripts cause the app to read the configuration from [/config/index.js](https://github.com/tutorialhorizon/react-webpack-nodejs-starterkit/blob/redux-integrations/config/index.js).
+
 ```
 $ npm run hot-dev
 ```
-Watches for changes to your react components in the `/flux` directory as well as sets up nodemon to watch your `/server` directory and automatically reloads everything!
+Watches for changes to your react components in the `/src` directory as well as sets up nodemon to watch your `/server` directory and automatically reloads everything!
 
 ```
 $ npm run dev
 ```
-Run this when you dont want any file watching but need to use development configuration from `/configs/index.js`
+Run this when you dont want any file watching but need to use development configuration from [/config/index.js](https://github.com/tutorialhorizon/react-webpack-nodejs-starterkit/blob/redux-integrations/config/index.js).
 
 ```
 $ npm run prod
 ```
-Run this when you want production configuration from `/config/index.js` and production settings for webpack.
+Run this when you want to use the `production` environment configuration from [/config/index.js](https://github.com/tutorialhorizon/react-webpack-nodejs-starterkit/blob/redux-integrations/config/index.js) and production settings for webpack.
 
 See the package.json scripts section for more details on the scripts.
 

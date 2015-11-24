@@ -6,7 +6,7 @@ var nib = require('nib');
 
 module.exports = function (options) {
     var jsxLoaders = ['babel-loader'];
-    var entry = [path.resolve(__dirname, '../flux/Routes.jsx')];
+    var entry = [path.resolve(__dirname, '../src/Root.jsx')];
     var plugins = [];
 
     if (options.hotComponents) {
