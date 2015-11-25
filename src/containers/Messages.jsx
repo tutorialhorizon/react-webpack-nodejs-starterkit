@@ -5,7 +5,10 @@ import {Link} from 'react-router';
 import {connect} from 'react-redux'
 
 // Actions
-import * as Actions from '../actions';
+import {
+	addGroceryItem,
+	addGroceryItemAsync
+} from '../modules/groceries/actions';
 
 // Components
 import Greeting from '../components/Greeting.jsx';
@@ -50,7 +53,7 @@ class Messages extends Component {
 		const p = this.props;
 
 		p.dispatch(
-			Actions.addGroceryItemAsync(this.getPayload())
+			addGroceryItemAsync(this.getPayload())
 		);
 	}
 
@@ -58,7 +61,7 @@ class Messages extends Component {
 		const p = this.props;
 
 		p.dispatch(
-			Actions.addGroceryItem(this.getPayload())
+			addGroceryItem(this.getPayload())
 		);
 	}
 

@@ -2,10 +2,10 @@
 
 import { combineReducers } from 'redux';
 import { routerStateReducer } from 'redux-router';
-import groceries from './groceries';
+import groceries from './groceries/reducers';
 
 // Export your root reducer
-export const rootReducer = combineReducers({
+export default combineReducers({
 	router: routerStateReducer,
 	groceries
 });

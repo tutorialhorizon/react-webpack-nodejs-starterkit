@@ -11,7 +11,7 @@ import {Provider} from 'react-redux';
 
 // Redux utilities in the app
 import getStoreEnhancers from './storeEnhancers';
-import {rootReducer} from './reducers';
+import rootReducer from './modules/rootReducer';
 
 // Files from the app
 import routes from './Routes.jsx';
