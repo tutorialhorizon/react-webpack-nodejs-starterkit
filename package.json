@@ -5,10 +5,13 @@
   "author": "tutorialhorizon@gmail.com",
   "scripts": {
     "build": "grunt build",
-    "dev": "NODE_ENV=development node index.js",
-    "hot-client": "HOT=true NODE_ENV=development node startDevServer.js",
-    "hot-dev": "npm run hot-client & NODE_ENV=development nodemon --watch server index.js",
-    "prod": "webpack --config webpack/prod-config.js --progress && NODE_ENV=production node index.js"
+    "dev": "npm run dev-client & npm run dev-server",
+    "hot-dev": "npm run hot-dev-client & npm run hot-dev-server",
+    "prod": "webpack --config webpack/prod-config.js --progress && NODE_ENV=production node index.js",
+    "dev-client": "NODE_ENV=development node startDevServer.js",
+    "dev-server": "NODE_ENV=development node index.js",
+    "hot-dev-client": "HOT=true NODE_ENV=development node startDevServer.js",
+    "hot-dev-server": "NODE_ENV=development nodemon --watch server index.js"
   },
   "dependencies": {
     "babel-core": "^5.8.21",
