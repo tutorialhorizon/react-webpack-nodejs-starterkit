@@ -27,7 +27,8 @@ var config = appConfig[process.env.NODE_ENV];
 winston.level = config.winston.level;
 
 if (environment === 'development') {
-	require('./webpackServer').start(app);
+	require('./webpackServer').setupDev(app);
+	// require('./webpackServer').start(app);
 }
 
 global.config = config;

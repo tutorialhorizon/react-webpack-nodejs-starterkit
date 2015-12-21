@@ -6,7 +6,8 @@
   "scripts": {
     "build": "grunt build",
     "dev": "NODE_ENV=development node index.js",
-    "hot-dev": "HOT=true NODE_ENV=development nodemon --watch server index.js",
+    "hot-client": "HOT=true NODE_ENV=development node startDevServer.js",
+    "hot-dev": "npm run hot-client & NODE_ENV=development nodemon --watch server index.js",
     "prod": "webpack --config webpack/prod-config.js --progress && NODE_ENV=production node index.js"
   },
   "dependencies": {
