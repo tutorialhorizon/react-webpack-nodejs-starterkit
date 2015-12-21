@@ -1,1 +1,1 @@
-require('./webpackServer').start2();
+require('./webpack/server').start();
